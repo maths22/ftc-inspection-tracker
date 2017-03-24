@@ -1,0 +1,57 @@
+.teams-table, .teams-table td, .teams-table th {
+    text-align: center;
+    border-color: #aaa;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+}
+
+/* -- Custom Checkbox Styling -- */
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label
+{
+   /*background: #999;*/
+   background-image: url('no.svg');
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 16px;
+   width: 16px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+}
+
+input[type=checkbox]:checked + label
+{
+    /*background: #0080FF;*/
+    background-image: url('yes.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+}
+
+input[type=checkbox] + label {
+    margin: 0px;
+}

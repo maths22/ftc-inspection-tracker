@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.retryAjax.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/inspection.js"></script>
+
+  <title>{{event}}</title>
+</head>
+
+{{#*inline "headings"}}
+<th>Team</th>
+{{#each categories}}
+<th>{{this}}</th>
+{{/each}}
+{{/inline}}
+
+{{#*inline "inputField"}}
+<td class="status hidden">
+  <input type="checkbox" name="{{name}}-{{number}}" value="1" id="{{name}}-{{number}}" class="statusCheckbox" />
+  <label for="{{name}}-{{number}}"></label>
+</td>
+{{/inline}}
+
+{{#*inline "checkboxes"}}
+<td>{{number}}</td>
+{{#each categories}}
+{{> inputField name=(slugify this) number=../number}}
+{{/each}}
+{{/inline}}
+
+<body>
+  <div class="container">
+    <h2>{{event}}</h2>
+    <form id="resultsForm">
+      {{#each groupedTeams}}
+      <div class="col-md-{{../colSize}}">
+        <table class="teams-table table table-striped table-bordered table-condensed">
+          <tr>
+            {{> headings categories=../categories}}
+          </tr>
+
+          {{#each this}}
+          <tr>
+            {{> checkboxes number=this categories=../../categories}}
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+      {{/each}}
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="pull-right text-muted">
+        <button type="button" class="btn btn-link" id="loginModalButton">Login</button>
+        <button type="button" class="btn btn-link" id="editModalButton">Edit</button>
+      </p>
+    </div>
+  </footer>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign in</h4>
+        </div>
+        <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="inputEmail" class="sr-only">Username</label>
+            <input name="name" type="text" id="inputEmail" class="form-control" placeholder="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          </div>
+          <span id="loginError" class="error text-danger"></span>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Configuration</h4>
+      </div>
+      <div class="modal-body">
+      <form id="editForm">
+        <div class="form-group">
+          <label for="editForm-name">Event</label>
+          <input name="event" id="editForm-name" type="text" class="form-control" placeholder="Event" required value="{{event}}">
+        </div>
+        <div class="form-group">
+          <label for="editForm-categories">Categories</label>
+          <span id="editForm-categories-help" class="help-block">Categories must be separated by commas</span>
+          <textarea name="categories" id="editForm-categories" class="form-control" placeholder="Check In,Hardware,Field,Judging" rows="2" required aria-describedby="editForm-categories-help">{{categories}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="editForm-teams">Teams</label>
+          <span id="editForm-teams-help" class="help-block">Team numbers must be separated by commas</span>
+          <textarea name="teams" id="editForm-teams" class="form-control" placeholder="1,2,3,4" rows="5" required aria-describedby="editForm-teams-help">{{teams}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="editForm-colCount">Column count</label>
+          <input name="colCount" id="editForm-colCount" type="number" class="form-control" placeholder="Column count" required value="{{colCount}}" min="1">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+      </form>
+      </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</body>
+</html>

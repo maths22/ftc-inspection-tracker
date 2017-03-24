@@ -1,0 +1,67 @@
+[{
+    "from": "/:id/",
+    "to": "/_show/display/:id/",
+    "method": "GET",
+    "query": {}
+},{
+    "from": "/:id/getStatus",
+    "to": "/_show/status/:id/",
+    "method": "GET",
+    "query": {}
+},
+{
+    "from": "/:id/updateStatus",
+    "to": "/_update/status/:id",
+    "method": "POST",
+    "query": {}
+},
+{
+    "from": "/:id/updateConfig",
+    "to": "/_update/config/:id",
+    "method": "POST",
+    "query": {}
+},
+{
+    "from": "/create",
+    "to": "/_update/clone/template",
+    "method": "POST",
+    "query": {}
+},
+{
+    "from": "/:id/statusFeed",
+    "to": "../../_changes",
+    "method": "GET",
+    "query": {
+      "filter": "inspectionStatus/matchId",
+      "id": ":id",
+      "feed": "longpoll"
+    }
+},
+{
+  "from": "/css/:file",
+  "to": "/css/:file",
+  "method": "GET",
+  "query": {}
+},
+{
+  "from": "/js/:file",
+  "to": "/js/:file",
+  "method": "GET",
+  "query": {}
+},
+{
+  "from": "/fonts/:file",
+  "to": "/fonts/:file",
+  "method": "GET",
+  "query": {}
+},
+{
+  "from": "/",
+  "to": "/_list/eventList/allEvents"
+},
+{
+  "from": "*",
+  "to": "/_show/notfound",
+  "method": "GET",
+  "query": {}
+}]
