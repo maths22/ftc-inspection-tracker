@@ -1,4 +1,8 @@
 {
     "name": "Basic CouchApp",
-    "description": "CouchApp with changes feed and form support."
+    "description": "CouchApp with changes feed and form support.",
+    "hooks": {
+        "pre-push": [
+        ]
+    }
 }

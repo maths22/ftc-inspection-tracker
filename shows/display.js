@@ -1,11 +1,14 @@
 function(doc, req) {
   // !json templates.display
+  // !json templates.loginDialog
   // !json templates.notfound
 
   var Handlebars = require('views/lib/handlebars');
+  
   Handlebars.registerHelper('slugify', function(str) {
     return str.toLowerCase().replace(' ','-').replace('[^a-zA-Z\d-]','');
   });
+  Handlebars.registerPartial('loginDialog', templates.loginDialog);
 
 
   if(doc == null) {

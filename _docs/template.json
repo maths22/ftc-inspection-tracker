@@ -1,0 +1,18 @@
+{
+  "_id": "template",
+  "config": {
+    "event": "Event Name",
+    "categories": [
+      "Check In",
+      "Hardware",
+      "Field",
+      "Judging"
+    ],
+    "colCount": 3,
+    "teams": [
+      1,
+      2,
+      3
+    ]
+  }
+}

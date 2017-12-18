@@ -1,0 +1,24 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign in</h4>
+        </div>
+        <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="inputEmail" class="sr-only">Username</label>
+            <input name="name" type="text" id="inputEmail" class="form-control" placeholder="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          </div>
+          <span id="loginError" class="error text-danger"></span>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
