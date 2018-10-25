@@ -57,6 +57,12 @@ $(function() {
     })
 
     $('#createForm').submit(function(evt) {
+      var key = $("#createForm-key").val();
+      if(!/^[A-Za-z0-9-_]+$/.test(key)) {
+        $('#createError').html("An event key can only contain letters, numbers, '-', and '_'");
+        return false;
+      }
+      
       var data = $( "#createForm" ).serializeObject();
 
       $.ajax({
