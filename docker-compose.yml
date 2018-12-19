@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  couchdb:
+    build: .
+    environment:
+      VIRTUAL_HOST: "couchdb.docker,ftc-inspection.docker"
+      VIRTUAL_PORT: 5984
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: password
+    volumes: 
+      - couchdb-data:/opt/couchdb/data
+    logging:
+      options:
+        max-file: '5'
+        max-size: 1m
+volumes:
+  couchdb-data: 
