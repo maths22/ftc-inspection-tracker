@@ -1,24 +1,15 @@
 function(doc, req) {
-  // !json templates.display
-  // !json templates.loginDialog
-  // !json templates.notfound
 
   var Handlebars = require('views/lib/handlebars');
-  
-  Handlebars.registerHelper('slugify', function(str) {
-    return str.toLowerCase().replace(' ','-').replace('[^a-zA-Z\d-]','');
-  });
-  Handlebars.registerPartial('loginDialog', templates.loginDialog);
-
 
   if(doc == null) {
-    var template = Handlebars.compile(templates.notfound);
+    var template = Handlebars.templates['notfound']
     return {'code': 404, 'body': template({'title': 'Event Not Found',
         'message': 'Event &lsquo;' + req['query']['id'] + '&rsquo; Not Found'})};
   }
 
   // we only show html
-  var template = Handlebars.compile(templates.display);
+  var template = Handlebars.templates['display']
 
   var data = doc.config;
 

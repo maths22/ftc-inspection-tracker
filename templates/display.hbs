@@ -51,7 +51,12 @@
 
           {{#each this}}
           <tr>
-            {{> checkboxes number=this categories=../../categories}}
+            {{#if ../../categories}}
+              {{> checkboxes number=this categories=../../categories}}
+            {{else}}
+              {{!-- Handle singleton columns --}}
+              {{> checkboxes number=this categories=../categories}}
+            {{/if}}
           </tr>
           {{/each}}
         </table>
